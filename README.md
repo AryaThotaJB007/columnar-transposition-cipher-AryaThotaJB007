@@ -33,14 +33,24 @@ dependencies.
 
 ## Build & run
 
+A fresh Codespace/container likely won't have `nasm` installed. Install it
+first:
+
+```bash
+sudo apt-get update && sudo apt-get install -y nasm
+```
+
+Then assemble, link, and run:
+
 ```bash
 nasm -f elf32 cipher.asm -o cipher.o
 ld -m elf_i386 -o cipher cipher.o
 ./cipher
 ```
 
-Requires a 32-bit-capable Linux toolchain (`nasm`, `ld` from
-`binutils`, e.g. via `gcc-multilib`/`g++-multilib` on Debian/Ubuntu).
+(`ld` comes from `binutils`, which is preinstalled on standard Ubuntu
+Codespace images. This program links no libraries, so `gcc-multilib` is
+not needed here.)
 
 ## License
 
